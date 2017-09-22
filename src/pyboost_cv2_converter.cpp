@@ -406,6 +406,15 @@ void matFromNDArrayBoostConverter::construct(PyObject* object,
 	data->convertible = storage;
 }
 
+// class mat_vector_indexing_suite: public vector_indexing_suite {
+//   public:
+//     static bool
+//     contains(Container& container, key_type const& key)
+//     {
+//         return false;
+//     }
+//  }
+
 } //end namespace pbcvt
 
 #endif

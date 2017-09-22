@@ -16,6 +16,9 @@
 #include <opencv2/core/core.hpp>
 #include <boost/python.hpp>
 #include <cstdio>
+# include <boost/python/suite/indexing/indexing_suite.hpp>
+# include <boost/python/suite/indexing/container_utils.hpp>
+# include <boost/python/iterator.hpp>
 
 namespace pbcvt{
 
@@ -87,5 +90,8 @@ struct matFromNDArrayBoostConverter {
 	static void construct(PyObject* object,
 			boost::python::converter::rvalue_from_python_stage1_data* data);
 };
+
+
 } // end namespace pbcvt
+
 #endif /* CVBOOSTCONVERTER_HPP_ */
