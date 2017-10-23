@@ -57,14 +57,24 @@ catkin_package(
 4e.  Add pyboostcvconverter include/libs to your project
 ```
 # Include dirs
-set(PROJECT_INCLUDE_DIRS ${pyboostcvconverter_INCLUDE_DIRS}  ...other_include... )
+set(PROJECT_INCLUDE_DIRS ${pyboostcvconverter_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS}  ...other_include... )
 
 # Libraries
-set(PROJECT_LIBRARIES ${pyboostcvconverter_LIBRARIES} ...other_libraries...)
+set(PROJECT_LIBRARIES ${pyboostcvconverter_LIBRARIES} ${PYTHON_LIBRARIES} ...other_libraries...)
 ```
 
-4f. create your library with name ```X```, link and add dependencies to CMakeLists.txt
+4f. create your library with name ```my_lib```, link and add dependencies to CMakeLists.txt
 ```
+
+add_library(my_lib ...)
+target_link_libraries(my_lib ${PROJECT_LIBRARIES} ...)
+add_dependencies(my_lib ${catkin_EXPORTED_TARGETS})
+
+```
+
+4g.  unset python libraries because this variable could be used in future cmakes... and for somereason it stays if it is set here
+```
+UNSET(PYTHON_LIBRARIES)
 ```
 
 5. Make sure in your c++ boost code the name of your python module is ```libX``` and that you 
