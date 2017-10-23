@@ -4,7 +4,12 @@ Integration
 1.  Add pyboostcvconverter to package.xml
 2.  Add ```pyboostcvconverter/cmake/DetectPython.cmake``` to your module's ```cmake/Modules/``` folder
 3.  Add find package to CMakeLists.txt
-4. Add find package
+4.  a. Add python to boost find package 
+
+```
+find_package(Boost REQUIRED COMPONENTS python)
+```
+4.  b. Add pyboostcvconverter to catkin find packagefind package
 
 ```
 find_package(catkin REQUIRED COMPONENTS
@@ -13,8 +18,9 @@ find_package(catkin REQUIRED COMPONENTS
   ...
 )
 ```
-5.  Add python setup to CMakeLists.txt
-```
+
+4   c. load python interface package stuff
+```    
 ####################
 #====== PYTHON Interface
 ####################
@@ -37,18 +43,47 @@ SET(PYTHON_LIBRARIES ${PYTHON2_LIBRARY})
 SET(PYTHON_EXECUTABLE ${PYTHON2_EXECUTABLE})
 SET(PYTHON_PACKAGES_PATH ${PYTHON2_PACKAGES_PATH})
 SET(ARCHIVE_OUTPUT_NAME pbcvt_py2)
+
+### End python interface
 ```
-6. create your library with name ```X```, link and add dependencies to CMakeLists.txt
-7. Make sure in your c++ boost code the name of your python module is ```libX``` and that you 
+4d. add pyboostconverter to catkin_package
+```
+catkin_package(
+   CATKIN_DEPENDS ... pyboostcvconverter
+)
+
+```
+
+4e.  Add pyboostcvconverter include/libs to your project
+```
+# Include dirs
+set(PROJECT_INCLUDE_DIRS ${pyboostcvconverter_INCLUDE_DIRS}  ...other_include... )
+
+# Libraries
+set(PROJECT_LIBRARIES ${pyboostcvconverter_LIBRARIES} ...other_libraries...)
+```
+
+4f. create your library with name ```X```, link and add dependencies to CMakeLists.txt
+```
+```
+
+5. Make sure in your c++ boost code the name of your python module is ```libX``` and that you 
+
+.h
+```c++
+#include <boost/python.hpp>
+#include <pyboostcvconverter/pyboostcvconverter.hpp>
+#include <pyboostcvconverter/mat_vector_indexing_suite.hpp>
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+```
+.cpp
 
 ```c++
 
-#ifndef PY_ARRAY_UNIQUE_SYMBOL
+#ifndef PY_ARRAY_UNIQUE_SYMBOL_GAURD
+#define PY_ARRAY_UNIQUE_SYMBOL_GAURD
 #define PY_ARRAY_UNIQUE_SYMBOL pbcvt_ARRAY_API
 #endif
-
-#include <boost/python.hpp>
-#include <pyboostcvconverter/pyboostcvconverter.hpp>
 
 using namespace boost::python;
 
