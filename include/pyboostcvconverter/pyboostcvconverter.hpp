@@ -72,20 +72,20 @@ Mat fromNDArrayToMat(PyObject* o);
 //===================   BOOST CONVERTERS     =======================================================
 
 struct matToNDArrayBoostConverter {
-	static PyObject* convert(Mat const& m);
+    static PyObject* convert(Mat const& m);
 };
 
 
 struct matFromNDArrayBoostConverter {
 
-	matFromNDArrayBoostConverter();
+    matFromNDArrayBoostConverter();
 
-	/// @brief Check if PyObject is an array and can be converted to OpenCV matrix.
-	static void* convertible(PyObject* object);
+    /// @brief Check if PyObject is an array and can be converted to OpenCV matrix.
+    static void* convertible(PyObject* object);
 
-	/// @brief Construct a Mat from an NDArray object.
-	static void construct(PyObject* object,
-			boost::python::converter::rvalue_from_python_stage1_data* data);
+    /// @brief Construct a Mat from an NDArray object.
+    static void construct(PyObject* object,
+            boost::python::converter::rvalue_from_python_stage1_data* data);
 };
 } // end namespace pbcvt
 #endif /* CVBOOSTCONVERTER_HPP_ */

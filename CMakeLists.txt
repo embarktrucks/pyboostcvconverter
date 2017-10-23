@@ -51,7 +51,7 @@ endif ()
 
 file(GLOB project_sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
-add_library(${PROJECT_NAME} SHARED ${project_sources} ${CMAKE_CURRENT_SOURCE_DIR}/include/pyboostcvconverter/pyboostcvconverter.hpp)
+add_library(${PROJECT_NAME} SHARED ${project_sources} ${CMAKE_CURRENT_SOURCE_DIR}/include/pyboostcvconverter/pyboostcvconverter.hpp ${CMAKE_CURRENT_SOURCE_DIR}/include/pyboostcvconverter/mat_vector_indexing_suite.hpp)
 target_include_directories(${PROJECT_NAME} PUBLIC
         "${CMAKE_CURRENT_SOURCE_DIR}/include"
         ${Boost_INCLUDE_DIRS}
