@@ -83,7 +83,7 @@ UNSET(PYTHON_LIBRARIES)
 ```c++
 #include <boost/python.hpp>
 #include <pyboostcvconverter/pyboostcvconverter.hpp>
-#include <pyboostcvconverter/mat_vector_indexing_suite.hpp>
+#include <pyboostcvconverter/uncomparable_vector_indexing_suite.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 ```
 .cpp

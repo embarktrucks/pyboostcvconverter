@@ -3,8 +3,8 @@
 //  accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENmat_SE_1_0.txt)
 
-#ifndef MAT_VECTOR_INDEXING_SUITE_JDG20036_HPP
-# define MAT_VECTOR_INDEXING_SUITE_JDG20036_HPP
+#ifndef UNCOMPARABLE_VECTOR_INDEXING_SUITE_JDG20036_HPP
+# define UNCOMPARABLE_VECTOR_INDEXING_SUITE_JDG20036_HPP
 
 # include <boost/python/suite/indexing/indexing_suite.hpp>
 # include <boost/python/suite/indexing/container_utils.hpp>
@@ -14,17 +14,17 @@ namespace boost { namespace python {
             
     // Forward declaration
     template <class Container, bool NoProxy, class DerivedPolicies>
-    class mat_vector_indexing_suite;
+    class uncomparable_vector_indexing_suite;
     
     namespace detail
     {
         template <class Container, bool NoProxy>
-        class final_mat_vector_derived_policies 
-            : public mat_vector_indexing_suite<Container, 
-                NoProxy, final_mat_vector_derived_policies<Container, NoProxy> > {};
+        class final_uncomparable_vector_derived_policies 
+            : public uncomparable_vector_indexing_suite<Container, 
+                NoProxy, final_uncomparable_vector_derived_policies<Container, NoProxy> > {};
     }
 
-    // The mat_vector_indexing_suite class is a predefined indexing_suite derived 
+    // The uncomparable_vector_indexing_suite class is a predefined indexing_suite derived 
     // class for wrapping std::vector (and std::vector like) classes. It provides
     // all the policies required by the indexing_suite (see indexing_suite).
     // Example usage:
@@ -34,7 +34,7 @@ namespace boost { namespace python {
     //  ...
     //
     //      class_<std::vector<X> >("XVec")
-    //          .def(mat_vector_indexing_suite<std::vector<X> >())
+    //          .def(uncomparable_vector_indexing_suite<std::vector<X> >())
     //      ;
     //
     // By default indexed elements are returned by proxy. This can be
@@ -44,8 +44,8 @@ namespace boost { namespace python {
         class Container, 
         bool NoProxy = false,
         class DerivedPolicies 
-            = detail::final_mat_vector_derived_policies<Container, NoProxy> >
-    class mat_vector_indexing_suite 
+            = detail::final_uncomparable_vector_derived_policies<Container, NoProxy> >
+    class uncomparable_vector_indexing_suite 
         : public indexing_suite<Container, DerivedPolicies, NoProxy>
     {
     public:
@@ -238,4 +238,4 @@ namespace boost { namespace python {
        
 }} // namespace boost::python 
 
-#endif // MAT_VECTOR_INDEXING_SUITE_JDG20036_HPP
+#endif // UNCOMPARABLE_VECTOR_INDEXING_SUITE_JDG20036_HPP
