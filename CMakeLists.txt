@@ -65,6 +65,7 @@ target_link_libraries(${PROJECT_NAME}
         ${PYTHON_LIBRARIES}
         )
 
+find_package(catkin REQUIRED)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
