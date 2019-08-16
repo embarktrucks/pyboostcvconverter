@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("pyboostcvconverter")
 
+find_package(catkin REQUIRED)
+# Catkin package should come before add_library
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME}
+)
+
 #----------------------------CMAKE & GLOBAL PROPERTIES-------------------------#
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -65,7 +72,4 @@ target_link_libraries(${PROJECT_NAME}
         ${PYTHON_LIBRARIES}
         )
 
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES ${PROJECT_NAME}
-)
+
